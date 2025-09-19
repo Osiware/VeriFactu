@@ -1,12 +1,15 @@
 # VeriFactu
-Ejemplo Generación QR en factura de la nueva normativa AEAT
+Ejemplo Generación QR para la factura de la nueva normativa AEAT
 
-Verifactu es un sistema de verificación de facturas obligatorio en España, introducido por la Ley Antifraude, que busca aumentar la transparencia y el control fiscal mediante el envío automático de los registros de facturación a la Agencia Tributaria (AEAT) en tiempo real para prevenir el fraude. Los programas de facturación compatibles deben garantizar la integridad, trazabilidad y conservación de las facturas, e incluir un código QR y la mención "Veri*Factu" en el documento. La implementación está progresando, con la obligatoriedad de usar software adaptado para los contribuyentes desde enero 2026 para sociedades y a partir de julio de 2026 para todos los demas (Autonomos).
-Se ha de generar la factura según la nueva norma (XML) , se envia a la AEAT que validará y nos facilita un código de validadión que se debe incorporar en la
-factura en el codigo QR, con todos los datos reaccionado con el emisor y el destinatario y datos de la factura.
+Verifactu es un sistema de verificación de facturas obligatorio en España, introducido por la Ley Antifraude, que busca aumentar la transparencia y el control fiscal mediante la comprobación automátia de los registros de facturación por la Agencia Tributaria (AEAT) en tiempo real si lo requiere para prevenir el fraude. Los programas de facturación compatibles deben garantizar la integridad, trazabilidad y conservación de las facturas e incluir un código QR y la mención "Veri*Factu" en el documento. La implementación está progresando, con la obligatoriedad de usar software (SIF) adaptado para los contribuyentes desde enero 2026 para sociedades y a partir de julio de 2026 para todos los demas (Autonomos).
 
-Requerimos de Certificado Digital válido en un fichero con su password para el envio, o bien utilizar una empresa que nos facilite este envio y la generación posterior.
+En otros paises el "idVerifactu" es sumunistrado por sus agencias de tributos tras enviar los registros de la factura, parece ser que en España lo genera la aplicación homologada o bien un UID generado por la aplicación de facturación que cumpla con los requisitos.
 
+Se ha de generar la factura según la nueva norma, y almacenada en una base de datos similar a un Blockchain (pero no distribuido) que garatizará la integridad de la información, esta aplicación homologada o que cumpla con los requisitos nos generará el código de validadión que se debe incorporar en la factura en el código QR, con todos los datos relaccionado con el emisor y el destinatario y datos de la factura (que se guardará en una cadena (cadena de bloques) no etitable e inmutable, con todos los registros relaccionados mediante un hash del anterior y dará su hash al posterior) estos registros deberan contener la información requierida por la AEAT y serán verificables mediante este QR.
+
+Se requerirá de un certificado digital valido, o bien utilizar una empresa que nos facilite este proceso con generación posterior de la factura para el cliente.
+
+------------------------------------------------
 Este ejemplo requiere de librerias externas y esta generado, realizado y probado en PHP 8.4 bajo Debian 12, Composer para librerias externas.
 
 (instalación de composer)
@@ -63,4 +66,21 @@ para ejecutar el ejemplo:
 php factura.php (desde el directorio de instalación).
 ---------------------------------------------------------------
 */
+
+Sinopsis AEAT :
+
+https://sede.agenciatributaria.gob.es/Sede/iva/sistemas-informaticos-facturacion-verifactu.html
+
+Aunque «VERI*FACTU» es solo una de las dos modalidades por medio de las que se puede cumplir con la normativa de sistemas de facturación, en general, 
+el término «VERI*FACTU» se emplea como expresión coloquial para referirse al reglamento que establece los requisitos que deben adoptar los sistemas 
+y programas informáticos o electrónicos que soporten los procesos de facturación de empresarios y profesionales (SIF), 
+y la estandarización de formatos de los registros de facturación, también abreviado como RRSIF.
+
+De forma resumida, esta normativa obliga a los SIF a que, en el momento de expedición de la factura, generen y guarden o remitan a la Agencia Tributaria
+un resumen de la factura llamado registro de facturación que lleva incorporado una serie de medidas de seguridad y control, como son la huella digital de sus datos, 
+la inclusión de información del anterior registro generado (lo que permite verificar que no hay saltos u omisiones) y, en su caso, 
+la firma electrónica del emisor del mismo. Asimismo, obligan a los SIF a que incluyan un código QR en la factura expedida, cuya lectura 
+(por ejemplo, con la cámara de un teléfono móvil) permite a quien reciba dicha factura remitir fácilmente ciertos datos de la misma a la Agencia Tributaria, 
+para su posible contraste con los datos remitidos o comprobación posterior.
+
 
