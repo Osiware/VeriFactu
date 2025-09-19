@@ -1,0 +1,16 @@
+{
+  "name": "tu-vendor/factura-lib-produccion",
+  "description": "Librería PHP profesional de facturas con PDF, QR y Facturae XML validado por AEAT",
+  "type": "library",
+  "require": {
+    "php": ">=7.4",
+    "tecnickcom/tcpdf": "^6.7",
+    "endroid/qr-code": "^4.8",
+    "robrichards/xmlseclibs": "^3.1"
+  },
+  "autoload": {
+    "psr-4": {
+      "FacturaLib\\": "src/"
+    }
+  }
+}
